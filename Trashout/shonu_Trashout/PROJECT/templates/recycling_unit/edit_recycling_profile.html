@@ -1,0 +1,54 @@
+{% extends 'recycling_unit/recy_nav.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+
+    <head>
+    <link href="{% static 'css/sstyle.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main" style="height:auto" >
+
+
+    <center><h1>EDIT PROFILE</h1>
+        <div class="col-xs-12" style="padding:10px;">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div class="alert alert-warning" role="alert" style="width:50%;">
+                                    <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+
+                    </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </center>
+
+<div class="main-div">
+            <form action="" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label"><b>Recycling Unit Id</b></label>
+                <input class="form-control" style="background-color:white;" disabled type="text" value="{{recycling.recycle_id}}">
+            </div>
+            {% bootstrap_form form_key%}
+            <div class="mb-3">
+                <label class="form-label"><b>Email</b></label>
+                <input class="form-control" style="background-color:white;" disabled type="text" value="{{recycling.email}}">
+            </div>
+
+            <div class="mb-3">
+                <input class="btn btn-primary mx-auto d-grid gap-2 col-12" type="submit" value="Update">
+            </div>
+            </form>
+</div>
+
+
+
+</section>
+{% endblock content %}
+

@@ -1,0 +1,174 @@
+{% extends 'recycling_unit/recy_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+    <html>
+    <head>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <!-- other head elements... -->
+        <style>
+            .rating {
+    cursor: pointer;
+}
+
+.star {
+    display: inline-block;
+    font-size: 30px;
+    color: gray;
+    transition: color 0.3s;
+}
+
+.star.hover,
+.star.active {
+    color: gold;
+}
+.rating {
+    display: flex;
+}
+        </style>
+</head>
+    <body>
+    <section class="main">
+    {% if count == 0 %}
+    <center>
+        <div class="col-xs-12" style="padding:10px;">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div class="alert alert-warning" role="alert" style="width:50%;">
+                    <li %} %} class="{{ message.tags }}" endif if message.tags style="list-style-type: none;" {% {%>{{ message }}
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </center>
+    {% else %}
+    <div class="main-div">
+        <table border="1" class="table table-hover table-responsive">
+            <tr>
+                <th>BUYER</th>
+                <th>DATE</th>
+                <th>NAME</th>
+                <th>ADDRESS</th>
+                <th>PHONE NUMBER</th>
+                <th>STATE</th>
+                <th>DISTRICT</th>
+                <th>CITY</th>
+                <th>EMAIL</th>
+                <th>PRODUCT</th>
+                <th>PRODUCT NAME</th>
+                <th>PRODUCT PRICE</th>
+                <th>STATUS</th>
+                <th>RATING</th>
+            </tr>
+
+            {% for i in page_obj %}
+            <tr>
+
+                <td><img alt="" height="100px" src="{{i.rc_product_id.product_id.customers_id.profile_pic.url}}" width="100px"></td>
+                <td>{{i.accepted_on}}</td>
+                <td>{{i.rc_product_id.product_id.customers_id.firstname}} {{i.rc_product_id.product_id.customers_id.lastname}}</td>
+                <td>{{i.rc_product_id.product_id.customers_id.address}}</td>
+                <td>{{i.rc_product_id.product_id.customers_id.phone}}</td>
+                <td>{{i.rc_product_id.product_id.customers_id.state}}</td>
+                <td>{{i.rc_product_id.product_id.customers_id.district}}</td>
+                <td>{{i.rc_product_id.product_id.customers_id.city}}</td>
+                <td>{{i.rc_product_id.product_id.customers_id.email}}</td>
+                <td ><img alt="" height="100px" src="{{i.rc_product_id.product_id.image.url}}" width="100px"></td>
+                <td>{{i.rc_product_id.product_id.name}}</td>
+                <td>₹ {{i.rc_product_id.product_id.price}}</td>
+                <td>PRODUCT COLLECTED</td>
+                <td>
+    <div class="rating" data-productid="{{ i.rc_product_id.rc_product_id }}" data-selected="{{ i.rc_product_id.rating }}">
+        <span class="star" data-rating="1">★</span>
+        <span class="star" data-rating="2">★</span>
+        <span class="star" data-rating="3">★</span>
+        <span class="star" data-rating="4">★</span>
+        <span class="star" data-rating="5">★</span>
+    </div>
+</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <center>{% include "pagination.html" %}</center>
+    {% endif %}
+
+</section>
+<script src="{% static 'jq/jquery.min.js' %}"></script>
+    <script>
+$(document).ready(function () {
+    $('.rating').each(function () {
+        const productID = $(this).data('productid');
+        const selectedRating = $(this).data('selected');
+        let isRated = selectedRating > 0; // Check if the product has already been rated
+
+        // Initialize stars based on the selected rating
+        for (let i = 1; i <= 5; i++) {
+            const star = $(this).find(`[data-rating="${i}"]`);
+            if (i <= selectedRating) {
+                star.addClass('active');
+            }
+        }
+
+        // Disable hover and click events if the product is rated
+        if (isRated) {
+            $(this).find('.star').off('mouseenter mouseleave click');
+        } else {
+            // Handle hover effect
+            $(this).find('.star').hover(
+                function () {
+                    const rating = $(this).data('rating');
+                    $(this).parent().find('.star').removeClass('active');
+                    $(this).parent().find('.star').slice(0, rating).addClass('hover');
+                },
+                function () {
+                    $(this).parent().find('.star').removeClass('hover');
+                    $(this).parent().find('.star').slice(0, selectedRating).addClass('active');
+                }
+            );
+
+            // Handle click event
+            $(this).find('.star').click(function () {
+                const newRating = $(this).data('rating');
+                $(this).parent().find('.star').removeClass('active');
+                $(this).parent().find('.star').slice(0, newRating).addClass('active');
+
+                // Save the rating via Ajax
+                $.ajax({
+                    type: 'get',
+                    url: `/recycle_update_rating/`,
+                    data: { 'product_id': productID, 'new_rating': newRating },
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data.message);
+                        // Mark the product as rated
+                        isRated = true;
+                        // Remove hover and click event handlers
+                        $(this).parent().find('.star').off('mouseenter mouseleave click');
+                    }.bind(this),
+                });
+            });
+        }
+    });
+});
+
+
+</script>
+
+
+
+    </body>
+    </html>
+
+{% endblock content %}

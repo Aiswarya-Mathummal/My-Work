@@ -1,0 +1,61 @@
+{% extends 'users/users_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main" style="height:auto;">
+    <center><h4> Edit Vehicle Details </h4></center>
+        <center>
+    <div class="col-xs-12"  style="padding:10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-warning" role="alert" style="width:50%;">
+                <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    </center>
+    <div class="main-div">
+        <form action="" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <img class="rounded mx-auto d-block"  height="150px" width="150px" src="{{vehicle.images.url}}">
+            </div>
+            {% bootstrap_form form_key %}
+            <div class="mb-3">
+                <label class="form-label">Vehicle Id</label>
+                <input class="form-control" disabled type="text" value="{{vehicle.vehicle_id}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Owner Id</label>
+                <input class="form-control" disabled type="text" value="{{vehicle.owner_id}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Owner Name</label>
+                <input class="form-control" disabled type="text" value="{{vehicle.owner_id.first_name}} {{ambulance.owner_id.last_name}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Vehicle Identification Number</label>
+                <input class="form-control" disabled type="text" value="{{vehicle.vehicle_no}}">
+            </div>
+
+             <div class="mb-3">
+                <input class="btn btn-primary mx-auto d-grid gap-2 col-12" type="submit" value="Update">
+            </div>
+            <br>
+            <br>
+        </form>
+
+    </div>
+</section>
+
+{% endblock content %}

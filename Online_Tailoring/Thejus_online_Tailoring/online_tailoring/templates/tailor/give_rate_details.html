@@ -1,0 +1,485 @@
+{% extends 'tailor/tailor_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+{% block content %}
+<html>
+<body>
+<section class="main" style="height:auto;">
+    <div class="main-div" style="width:100%">
+        <form action="" method="post" style="width:100%">
+            {% csrf_token %}
+            <table class="table responsive">
+                <tr>
+                    <td colspan="3" style="text-align:center:">
+                        <center><h1 class="card-title">Sewing Rate details</h1><h4 class="card-title"
+                                                                                   style="color:gray;">
+                            Requested on: {{req.requested_on}} </h4></center>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card" style="height:585px">
+                                    <div class="card-body">
+                                        <table class="table responsive">
+                                            <tr>
+                                                <th colspan="2" style="text-align:center;">customer details</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Name : </label>
+
+                                                        {{req.user_id.firstname}}&nbsp;{{req.user_id.lastname}}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Address : </label>
+
+                                                        {{req.user_id.address}}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Phone No : </label>
+
+                                                        {{req.user_id.phone_no}}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Email : </label>
+                                                        {{req.user_id.email}}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3" style="color:red;">
+                                                        <label class="form-label">Estimate Delivery
+                                                            Date: </label>
+
+                                                        {{req.delivery_date}}
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card" style="height:585px">
+                                    <div class="card-body">
+                                        <table class="table responsive">
+                                            <tr>
+                                                <th style="text-align:center;">Design Details</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Design : </label>
+
+                                                        <img class="rounded mx-auto d-block" height="295px"
+                                                             src="{{req.design_id.image.url}}"
+                                                             width="205px">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Name : </label>
+
+                                                        {{ req.design_id.name }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Designer Name : </label>
+
+                                                        {{ req.design_id.designer_id.firstname }}
+                                                        {{req.design_id.designer_id.lastname }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table responsive">
+                                            <tr>
+                                                <th colspan="2" style="text-align:center;">Measurement details</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Brand Size : </label>
+
+                                                        {{measurement.brand_size}}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Chest Measurement : </label>
+
+                                                        {{measurement.chest_measurement}} inch
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Waist Measurement : </label>
+
+                                                        {{measurement.waist_measurement}} inch
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Hip Measurement : </label>
+                                                        {{measurement.hip_measurement}} inch
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Shoulder Measurement: </label>
+                                                        {{measurement.shoulder_measurement}} inch
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Sleeve Length : </label>
+                                                        {{measurement.sleeve_length}} inch
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Outseam Length : </label>
+                                                        {{measurement.outseam_length}} inch
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table responsive">
+
+                                            <tr>
+                                                <th style="text-align:center;">Fabrics Choosen</th>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+
+                                                        {{fabric1.name}}
+                                                    </div>
+                                                </td>
+
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+
+                                                        <img class="rounded mx-auto d-block" height="100px"
+                                                             src="{{fabric1.image.url}}"
+                                                             width="100px">
+                                                    </div>
+                                                </td>
+
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+                                                        ₹ {{fabric1.price}}
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Qty : </label>
+
+                                                        <div class="col-xs-6"
+                                                             style="display:flex;align-item:center;justify-content:center;">
+                                                            <div class="p-4">
+                                                                <button class="btn btn-primary" id="dcs1">-</button>
+                                                            </div>
+                                                            <div class="p-4"><input readonly id="qty1"
+                                                                                    name="qty1"
+                                                                                    style="width:40px; text-align:center;"
+                                                                                    type="text"
+                                                                                    value="1"></div>
+                                                            <div class="p-4">
+                                                                <button class="btn btn-primary" id="inc1">+</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Fabric cost : </label>
+                                                        ₹ <input readonly id="price1" name="price1" type="text"
+                                                                 value="{{fabric1.price}}">
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            {% if fabric2 != '' %}
+                                            <tr>
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+
+                                                        {{fabric2.name}}
+                                                    </div>
+                                                </td>
+
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+
+                                                        <img class="rounded mx-auto d-block" height="100px"
+                                                             src="{{fabric2.image.url}}"
+                                                             width="100px">
+                                                    </div>
+                                                </td>
+
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+                                                        ₹ {{fabric2.price}}
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Qty : </label>
+
+                                                        <div class="col-xs-6"
+                                                             style="display:flex;align-item:center;justify-content:center;">
+                                                            <div class="p-4">
+                                                                <button class="btn btn-primary" id="dcs2">-</button>
+                                                            </div>
+                                                            <div class="p-4"><input readonly id="qty2"
+                                                                                    name="qty2"
+                                                                                    style="width:40px; text-align:center;"
+                                                                                    type="text"
+                                                                                    value="1"></div>
+                                                            <div class="p-4">
+                                                                <button class="btn btn-primary" id="inc2">+</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Fabric cost : </label>
+                                                        ₹ <input readonly id="price2" name="price2" type="text"
+                                                                 value="{{fabric2.price}}">
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            {% endif %}
+                                            {% if fabric3 != '' %}
+                                            <tr>
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+
+                                                        {{fabric3.name}}
+                                                    </div>
+                                                </td>
+
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+
+                                                        <img class="rounded mx-auto d-block" height="100px"
+                                                             src="{{fabric3.image.url}}"
+                                                             width="100px">
+                                                    </div>
+                                                </td>
+
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+                                                        ₹ {{fabric3.price}}
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Qty : </label>
+
+                                                        <div class="col-xs-6"
+                                                             style="display:flex;align-item:center;justify-content:center;">
+                                                            <div class="p-4">
+                                                                <button class="btn btn-primary" id="dcs3">-</button>
+                                                            </div>
+                                                            <div class="p-4"><input readonly id="qty3"
+                                                                                    name="qty3"
+                                                                                    style="width:40px; text-align:center;"
+                                                                                    type="text"
+                                                                                    value="1"></div>
+                                                            <div class="p-4">
+                                                                <button class="btn btn-primary" id="inc3">+</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Fabric cost : </label>
+                                                        ₹ <input readonly id="price3" name="price3" type="text"
+                                                                 value="{{fabric3.price}}">
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            {% endif %}
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table responsive">
+                                            <tr>
+                                                <td style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" style="font-size:19px;font-weight:700">Sewing Charge : </label>
+                                                        ₹ <input id="sewingCharge" name="sewing_charge" type="text"  value="900" style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;background:white;font-size:19px;font-weight:700">
+                                                    </div>
+                                                    </td>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" style="font-size:19px;font-weight:700">Design Charge : </label>
+                                                        ₹ <input id="designCharge" readonly name="design_charge" type="text" value="{{req.design_id.price}}"  style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;background:white;font-size:19px;font-weight:700">
+                                                    </div>
+                                                    </td>
+                                                <td>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" style="font-size:19px;font-weight:700">Total Price : </label>
+                                                        ₹ <input readonly id="totalPrice" name="totalPrice" type="text"  style="text-align:center;align-item:center;justify-content:center;vertical-align: middle;background:white;font-size:19px;font-weight:700">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <center><input type="submit" class="btn col-lg-8" name="" id=""  ></center>
+        </form>
+    </div>
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const fabricPrices = [
+            {{ fabric1.price }},
+            {{ fabric2.price }},
+            {{ fabric3.price }}
+        ];
+
+        // Get references to sewing and design charge inputs
+        const sewingChargeInput = document.getElementById("sewingCharge");
+        const designChargeInput = document.getElementById("designCharge");
+
+        for (let i = 0; i < fabricPrices.length; i++) {
+            const quantityInput = document.getElementById(`qty${i + 1}`);
+            const increaseButton = document.getElementById(`inc${i + 1}`);
+            const decreaseButton = document.getElementById(`dcs${i + 1}`);
+            const priceInput = document.getElementById(`price${i + 1}`);
+            let quantity = 1; // Initial quantity for each item
+
+            increaseButton.addEventListener("click", (event) => {
+                event.preventDefault(); // Prevent form submission
+                quantity++;
+                quantityInput.value = quantity;
+                priceInput.value = fabricPrices[i] * quantity;
+                updateTotalPrice();
+            });
+
+            decreaseButton.addEventListener("click", (event) => {
+                event.preventDefault(); // Prevent form submission
+                if (quantity > 1) {
+                    quantity--;
+                    quantityInput.value = quantity;
+                    priceInput.value = fabricPrices[i] * quantity;
+                    updateTotalPrice();
+                }
+            });
+        }
+
+        sewingChargeInput.addEventListener("input", updateTotalPrice);
+        designChargeInput.addEventListener("input", updateTotalPrice);
+
+        function updateTotalPrice() {
+            const totalPriceInput = document.getElementById("totalPrice");
+            let total = 0;
+
+            for (let i = 0; i < fabricPrices.length; i++) {
+                total += fabricPrices[i] * parseInt(document.getElementById(`qty${i + 1}`).value);
+            }
+
+            // Add sewing charges and design charges to the total
+            total += parseFloat(sewingChargeInput.value) + parseFloat(designChargeInput.value);
+
+            totalPriceInput.value = total;
+        }
+
+        updateTotalPrice(); // Initial total price calculation
+    });
+</script>
+
+
+</body>
+</html>
+
+{% endblock content %}

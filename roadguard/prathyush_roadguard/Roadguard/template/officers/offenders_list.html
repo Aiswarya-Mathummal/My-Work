@@ -1,0 +1,129 @@
+{% extends 'officers/officers_nav.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+
+{% block content %}
+<html>
+<head>
+    <style>
+     table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid lightgrey;
+        padding: 8px;
+        text-align: center;
+    }
+        /* Responsive styles */
+    @media screen and (max-width: 600px) {
+        th, td {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        th, td:nth-of-type(even) {
+            background-color: #f2f2f2;
+        }
+    }
+
+    </style>
+</head>
+<body>
+<section class="main">
+    <center><h4> Reported Offences</h4></center>
+    {% if count == 0 %}
+    <center>
+        <div class="col-xs-12" style="padding:10px;">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div class="alert alert-warning" role="alert" style="width:50%;">
+                    <li %} %} class="{{ message.tags }}" endif if message.tags style="list-style-type: none;" {% {%>{{message }}
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </center>
+    {% else %}
+    <center>
+        <div class="col-xs-12">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div class="alert alert-warning" role="alert" style="width:50%;">
+                    <li %} %} class="{{ message.tags }}" endif if message.tags style="list-style-type: none;" {% {%>{{message }}
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </center>
+    <div class="main-div" style="padding:40px">
+<div class="table-responsive">
+            <table border="1" class="table table-responsive" style="text-align:center;vertical-align:middle;">
+            <tr>
+                <th  class="table-primary" rowspan="2">Offence Id</th>
+                <th  class="table-primary" rowspan="2">Reported On</th>
+                <th  class="table-primary" rowspan="2">Verified On</th>
+                <th  class="table-primary" colspan="10">Offender Details</th>
+                <th  class="table-primary" rowspan="2">Fine</th>
+                <th  class="table-primary" rowspan="2">Reporter Id</th>
+                <th  class="table-primary" rowspan="2">Reporter</th>
+                <th  class="table-primary" rowspan="2">Status</th>
+            </tr>
+            <tr>
+                <th  class="table-primary">Vehicle No</th>
+                <th  class="table-primary">Details</th>
+                <th  class="table-primary">Image</th>
+                <th  class="table-primary" >Name</th>
+                <th  class="table-primary">Address</th>
+                <th  class="table-primary">Phone No</th>
+                <th  class="table-primary">State</th>
+                <th  class="table-primary">City</th>
+                <th  class="table-primary">Violation</th>
+                <th  class="table-primary">Violation Details</th>
+            </tr>
+
+            {% for i in page_obj %}
+            <tr>
+                <td>{{i.offence_id}}</td>
+                <td>{{i.offence_id.reported_on}}</td>
+                <td>{{i.verified_on}}</td>
+                <td>{{i.offence_id.vehicle_no}}</td>
+                <td>{{i.offence_id.details}}</td>
+                <td><img alt="" height="80px" src="{{i.offence_id.image.url}}" width="80px"></td>
+                <td>{{i.user_id.first_name}} {{i.user_id.first_name}}</td>
+                <td>{{i.user_id.address}}</td>
+                <td>{{i.user_id.phone_no}}</td>
+                <td>{{i.user_id.state}}</td>
+                <td>{{i.user_id.city}}</td>
+                <td>{{i.offence_id.violation_id.violation}}</td>
+                <td>{{i.offence_id.violation_id.details}}</td>
+                <td>{{i.offence_id.violation_id.fine}}</td>
+                <td>{{i.offence_id.reporter_id}}</td>
+                <td>{{i.offence_id.reporter_id.first_name}} {{i.offence_id.reporter_id.first_name}}</td>
+                <td><a class="btn btn-primary" href="{% url 'fine_collected' login_id i.offender_id %}">Fine Collected</a></td>
+
+            </tr>
+            {% endfor %}
+        </table>
+</div>
+
+    </div>
+
+    <center>{% include "pagination.html" %}</center>
+    {% endif %}
+</section>
+</body>
+</html>
+
+{% endblock content %}

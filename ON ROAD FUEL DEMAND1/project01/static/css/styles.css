@@ -1,0 +1,32 @@
+body {
+        background-color: #f4f4f4;
+        background-image: url('/static/images/bunk1.jpg');
+        background-size:auto;
+
+        background-repeat:no-repeat
+}
+    form {
+    background: rgba(255, 255, 255, 0.7); /* Use rgba to set the background color with opacity */
+    border: 2px solid #333; /* Add a border to the form */
+    border-radius: 15px; /* Set border radius for rounded corners */
+    padding: 30px; /* Add some padding for spacing */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow */
+
+.password-container {
+      position: relative;
+    }
+
+    #showPassword:checked + .password-container input[type="password"] {
+      display: none;
+    }
+
+    #showPassword:checked + .password-container input[type="text"] {
+      display: block;
+    }
+
+    .password-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }

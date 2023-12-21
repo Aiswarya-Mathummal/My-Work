@@ -1,0 +1,50 @@
+{% extends 'admin/admin_nav.html' %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+{% block content %}
+<body>
+ <section class="main">
+    <h1 align="center"><u><b>Bunk Details</b></u></h1>
+    <div class="main-div">
+
+<table border="1" class="table table-hover">
+
+    <tr>
+        <th>Bunk id</th>
+        <th>Name</th>
+        <th>image</th>
+        <th>state</th>
+        <th>District</th>
+        <th>city</th>
+
+
+    </tr>
+
+        {% for i in page_obj %}
+    <tr>
+        <td>{{i.bunk_id}}</td>
+        <td>{{i.name}}</td>
+        <td><img src="{{i.image.url}}" width="177px " height="100px">{{ i.images.url}}</td>
+        <td>{{i.state}}</td>
+        <td>{{i.district}}</td>
+        <td>{{i.city}}</td>
+
+        {% endfor %}
+    </tr>
+
+</table>
+    </div>
+<center>
+    {% include "pagination.html" %}
+</center>
+
+ </section>
+</body>
+
+{% endblock content %}
+<br><br>

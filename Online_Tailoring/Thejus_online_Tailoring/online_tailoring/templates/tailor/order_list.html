@@ -1,0 +1,52 @@
+{% extends 'tailor/tailor_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main">
+     <center>
+    <div class="col-xs-12"  style="padding:10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-warning" role="alert" style="width:50%;">
+                <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    </center>
+    <div class="main-div">
+        <table  class="table table-hover">
+            <tr>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>delivery date</th>
+                <th></th>
+            </tr>
+
+            {% for i in page_obj %}
+            <tr >
+                <td>{{i.user_id.firstname}}{{i.user_id.lastname}}</td>
+                <td>{{i.user_id.email}}</td>
+                <td>{{i.delivery_date}}</td>
+                {% if i.rate_given == True %}
+                <td style="text-align:center;"><p>Rate Given</p></td>
+                {% else %}
+                <td style="text-align:center;"><a class="btn btn-danger" href="{% url 'give_rate_details' login_id i.req_id %}">Give Rate Details</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+    <center>{% include "pagination.html" %}</center>
+</section>
+{% endblock content %}

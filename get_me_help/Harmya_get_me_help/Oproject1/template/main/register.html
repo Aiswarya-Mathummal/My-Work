@@ -1,0 +1,46 @@
+{% extends 'main/main_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% block content %}
+<section class="main" style="height:auto;" >
+    <center>
+    <div class="col-xs-12"  style="padding:10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-warning" role="alert" style="width:50%;">
+                <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</center>
+    <div class="main-div">
+<form action="" method="post" enctype="multipart/form-data" style="width:600px;">
+    {% csrf_token %}
+
+    {% bootstrap_form form_key %}
+        <div class="mb-3">
+                <label class="form-label">Select State:</label>
+                <select  class="form-control" id="state" name="state">
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Select City:</label>
+                <select  class="form-control" id="city" name="city">
+                </select>
+  </div>
+
+    <input class="btn btn-primary mx-auto d-grid gap-2 col-12" type="submit" value="submit" name="submit">
+</form>
+
+    </div>
+
+</section>
+
+{% endblock content %}
+

@@ -1,0 +1,37 @@
+{% extends 'officers/officers_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main">
+    <div class="main-div">
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Violation Id</th>
+                <th>Violation</th>
+                <th>Details</th>
+                <th>Fine</th>
+                <th colspan="2">Operation</th>
+            </tr>
+            {% for i in page_obj %}
+            <tr>
+                <td>{{i.violation_id}}</td>
+                <td>{{i.violation}}</td>
+                <td>{{i.details}}</td>
+                <td>{{i.fine}}</td>
+                <td><a class="btn btn-success" href="{% url 'edit_violations' login_id i.violation_id %}">Edit</a></td>
+                <td><a class="btn btn-danger" href="{% url 'delete_violation' login_id i.violation_id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+    <center>{% include "pagination.html" %}</center>
+</section>
+{% endblock content %}

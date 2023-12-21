@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>TRASH OUT | Home</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
+
+
+    <!-- Responsive CSS -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+     <link rel="stylesheet" href="{% static 'sstyle.css' %}">
+
+</head>
+
+<body>
+
+       <header class="header_area">
+    <!-- Top Header Area Start -->
+    <div class="top_single_area d-flex align-items-center justify-content-center">
+        <!-- Logo Area -->
+        <div class="top_logo text-center">
+            <a href="#"><img class="logo-img" src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+        </div>
+    </div>
+
+    <!-- Navbar Area -->
+    <div class="main_header_area">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 d-md-flex justify-content-center">
+                    <div class="main-menu-area">
+                        <nav class="navbar navbar-expand-lg align-items-start">
+                            <div class="collapse navbar-collapse align-items-start" id="karl-navbar">
+                                <ul class="navbar-nav animated" id="nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">REGISTER</a>
+                                        <div class="dropdown-menu" aria-labelledby="karlDropdown">
+                                            <a class="dropdown-item" href="{% url 'register_template' %}">CUSTOMER REGISTER</a>
+                                            <a class="dropdown-item" href="{% url 'recy_reg' %}">RECYCLING-UNIT REGISTER</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">login</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'help' %}">Help</a></li>
+                                    <!-- Add more menu items here -->
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <!-- ****** Header Area End ****** -->
+{% block content %} {% endblock content %}
+
+<br><br>
+
+            </div>
+        </footer>
+        <!-- ****** Footer Area End ****** -->
+        </header>
+    </div>
+    <!-- /.wrapper end -->
+
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Plugins js -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+
+</body>
+
+</html>

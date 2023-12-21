@@ -1,0 +1,19 @@
+{% if page_obj_div2.has_previous %}
+    <a href="?page_div2={{ page_obj_div2.previous_page_number }}">Previous</a>
+{% else %}
+    <span>Previous</span>
+{% endif %}
+
+{% for i in page_obj_div2.paginator.page_range %}
+    {% if page_obj_div2.number == i %}
+        <span style="color: #BE9278">{{ i }}</span>
+    {% else %}
+        <a style="color: black" href="?page_div2={{ i }}">Next</a>
+    {% endif %}
+{% endfor %}
+
+{% if page_obj_div2.has_next %}
+    <a href="?page_div2={{ page_obj_div2.next_page_number }}">Next</a>
+{% else %}
+    <span>Next</span>
+{% endif %}

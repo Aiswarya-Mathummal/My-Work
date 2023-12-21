@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Price Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="priceForm">
+        Quantity: <input type="text" id="quantity" name="quantity"><br>
+        <input type="submit" value="Calculate">
+    </form>
+    <div id="result"></div>
+    <script src="{% static 'js/script.js' %}"></script> <!-- Assuming your script is in a 'js' folder -->
+</body>
+</html>

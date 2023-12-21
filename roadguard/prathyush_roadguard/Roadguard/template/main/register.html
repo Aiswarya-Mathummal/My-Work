@@ -1,0 +1,46 @@
+{%  extends "main/main_nav.html" %}
+{% block content %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+          <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+<!--              <div class="registration-page">-->
+                <h1 class="mt-5 mb-4">Register Page</h1>
+<!--                <center>-->
+<!--                  <ul class="custom-list">-->
+<!--                    {% for message in messages %}-->
+<!--                      <div class="custom-alert alert alert-info" role="alert"  style="width:50%;">-->
+<!--                        <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>-->
+<!--                      </div>-->
+<!--                      {% endfor %}-->
+<!--                  </ul>-->
+<!--                </center>-->
+            <div class="form-group">
+                <form method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <strong>
+                        {% bootstrap_form form%}                    </strong>
+                    <div class="mb-3">
+                <label class="form-label">Select State:</label>
+                <select  class="form-control" id="state" name="state">
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Select City:</label>
+                <select  class="form-control" id="city" name="city">
+                </select>
+            </div>
+                    <div class="button-container">
+                        <input type="submit" value="Submit">
+                    </div>
+
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+ {% endblock  %}

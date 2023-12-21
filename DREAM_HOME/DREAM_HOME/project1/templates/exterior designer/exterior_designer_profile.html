@@ -1,0 +1,68 @@
+{% extends 'exterior designer/exterior_designer_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+{% block content %}
+<section style="padding:80px;background-color:#1a1a1a;">
+     <center>
+    <div class="col-xs-12"  style="padding:10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-warning" role="alert" style="width:50%;">
+                <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    </center>
+    <form action=""  style="width:500px"  method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Exterior Designer Id</label>
+                <input class="form-control" disabled type="text" value="{{exterior_designer.exterior_designer_id}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input class="form-control" disabled type="text" value="{{exterior_designer.name}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Profile Photo</label>
+                <img class="rounded mx-auto d-block" src="{{exterior_designer.photo.url}}" width="100px">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="exampleFormControlTextarea1">Address</label>
+                <textarea class="form-control" disabled id="exampleFormControlTextarea1"
+                          rows="3">{{exterior_designer.address}}</textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">District</label>
+                <input class="form-control" disabled type="text" value="{{exterior_designer.district}}">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input class="form-control" disabled type="text" value="{{exterior_designer.phone_no}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input class="form-control" disabled type="text" value="{{exterior_designer.email}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input class="form-control" disabled type="password" value="{{exterior_designer.password}}">
+            </div>
+
+            <div class="mb-3">
+                <a class="btn btn-outline-success mx-auto d-grid gap-2 col-6"
+                   href="{% url 'edit_exterior_designer_profile' login_id %}"> Edit</a>
+            </div>
+            <br>
+            <br>
+    </form>
+</section>
+{% endblock content %}

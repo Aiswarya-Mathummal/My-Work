@@ -1,0 +1,76 @@
+{% extends 'bunk/bunk_nav.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         body {
+        background-color: #cceeff; /* Updated background color */
+        }
+         table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: grey;
+
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:nth-child(odd) {
+        background-color: #f4f4f4; /* Updated color for odd-numbered rows */
+        }
+
+        a {
+            text-decoration: none;
+             text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+{% block content %}
+<body>
+<section class="main">
+    <h1 align="center"><u><b>Bunk Details</b></u></h1>
+    <div class="main-div">
+
+<table border="1" class="table table-hover">
+    <tr>
+       <th>Petrol_bunk_name</th>
+        <th>Image</th>
+        <th>Email</th>
+        <th>State</th>
+        <th>District</th>
+        <th>City</th>
+    </tr>
+{% for i in users %}
+
+    <tr>
+        <td>{{i.name}}</td>
+        <td><img src="{{i.image.url}}" width="500" height="281"></td>
+        <td>{{i.email}}</td>
+        <td>{{i.state}}</td>
+        <td>{{i.district}}</td>
+        <td>{{i.city}}</td>
+        {% endfor %}
+    </tr>
+
+</table>
+    </div>
+</section>
+</body>
+{% endblock content %}

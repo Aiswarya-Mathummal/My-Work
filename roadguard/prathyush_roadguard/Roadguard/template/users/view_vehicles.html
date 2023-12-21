@@ -1,0 +1,45 @@
+{% extends 'users/users_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main">
+    <center><h4> Users List </h4></center>
+                        <center>
+                  <ul class="custom-list">
+                    {% for message in messages %}
+                      <div class="custom-alert alert alert-info" role="alert"  style="width:50%;">
+                        <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                      </div>
+                      {% endfor %}
+                  </ul>
+                </center>
+    <div class="main-div">
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>Vehicle Id</th>
+                <th>Vehicle No</th>
+                <th>Vehicle</th>
+                <th colspan="2">Operations</th>
+            </tr>
+
+            {% for i in page_obj %}
+            <tr>
+                <td>{{i.vehicle_id}}</td>
+                <td>{{i.vehicle_no}}</td>
+                <td ><img alt="" height="100px" src="{{i.images.url}}" width="100px"></td>
+                <td><a class="btn btn-success" href="{% url 'edit_vehicle' login_id i.vehicle_id %}">Edit</a></td>
+                <td><a class="btn btn-danger" href="{% url 'delete_vehicle' login_id i.vehicle_id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <center>{% include "pagination.html" %}</center>
+</section>
+{% endblock content %}

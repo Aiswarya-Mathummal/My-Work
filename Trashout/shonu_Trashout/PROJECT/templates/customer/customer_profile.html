@@ -1,0 +1,90 @@
+{% extends 'customer/customer_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+    <head>
+    <link href="{% static 'css/sstyle.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main" style="height:auto;">
+    <center>
+        <div class="col-xs-12" style="padding:10px;">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div class="alert alert-warning" role="alert" style="width:50%;">
+                         <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </center>
+    <div class="main-div" >
+
+        <form action="" method="POST" enctype="multipart/form-data" style="width:500px">
+            {% csrf_token %}
+            <div class="shonnappi">
+                <label class="form-label">Profile Pic</label>
+                <img height="300px" width="300px" class="rounded mx-auto d-block" src="{{customer.profile_pic.url}}">
+            </div>
+            <div class="shonnappi">
+                <label class="form-label">customer_id</label>
+                <input class="form-control" disabled type ="text" value="{{customer.reg_id}}">
+            </div>
+             <div class="shonnappi">
+                <label class="form-label">first name</label>
+                <input class="form-control" disabled type ="text" value="{{customer.firstname}}">
+             </div>
+             <div class="shonnappi">
+                <label class="form-label">last name</label>
+                <input class="form-control" disabled type ="text" value="{{customer.lastname}}">
+            </div>
+            <div class="shonnappi">
+                <label class="form-label">phone</label>
+                <input class="form-control" disabled type ="text" value="{{customer.phone}}">
+            </div>
+            <div class="shonnappi">
+                <label class="form-label" for="exampleFormControlTextarea1">address</label>
+                <input class="form-control" disabled type ="text" value="{{customer.address}}">
+            </div>
+            <div class="shonnappi">
+                <label class="form-label">state</label>
+                <input class="form-control" disabled type ="text" value="{{customer.state}}">
+            </div>
+            <div class="shonnappi">
+                <label class="form-label">district</label>
+                <input class="form-control" disabled type ="text" value="{{customer.district}}">
+            </div>
+            <div class="shonnappi">
+                <label class="form-label">city</label>
+                <input class="form-control" disabled type ="text" value="{{customer.city}}">
+            </div>
+            <div class="shonnappi">
+                <label class="form-label">email</label>
+                <input class="form-control" disabled type ="text" value="{{customer.email}}">
+            </div>
+            <div class="shonnappi">
+                <label class="form-label">password</label>
+                <input class="form-control" disabled type ="text" value="{{customer.password}}">
+            </div>
+            <div class="shonnappi">
+                <label class="form-label">id proof</label>
+                <img class="rounded mx-auto d-block" src="{{customer.id_proof.url}}">
+            </div>
+            <br>
+            <div class="shonnappi">
+                <a class="btn btn-outline-danger mx-auto d-grid gap-2 col-12"
+                   href="{% url 'edit_customer_profile' login_id %}">edit</a>
+            </div>
+            <br>
+            <br>
+
+        </form>
+    </div>
+</section>
+{% endblock content %}

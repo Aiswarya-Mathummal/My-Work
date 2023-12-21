@@ -1,0 +1,42 @@
+{% extends 'user/user_nav.html' %}
+{% load static %}
+{% block content %}
+<body>
+ <section class="main">
+<!--    <h1 align="center"><u><b>Fuel Details</b></u></h1>-->
+    <div class="main-div">
+
+<table border="1" class="table table-hover">
+    <tr>
+        <th>Profile Pic</th>
+        <th>Service Center</th>
+        <th>Address</th>
+        <th>Phone No</th>
+        <th>Email</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Id</th>
+        <th>Send Request</th>
+    </tr>
+
+{% for i in center_data %}
+    <tr>
+
+        <td ><img alt="" height="50px" src="{{i.profile_pic.url}}" width="50px"></td>
+        <td>{{i.name}}</td>
+        <td>{{i.address}}</td>
+        <td>{{i.phoneNo}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.state}}</td>
+        <td>{{i.city}}</td>
+        <td ><img alt="" height="50px" src="{{i.id.url}}" width="50px"></td>
+        <td><a class="btn btn-primary" href="{% url 'user_service_request' reg_id i.center_id %}">Request Service</a></td>
+{% endfor %}
+    </tr>
+</table>
+
+    </div>
+ </section>
+</body>
+<br><br><br><br><br><br><br><br>
+{% endblock content %}

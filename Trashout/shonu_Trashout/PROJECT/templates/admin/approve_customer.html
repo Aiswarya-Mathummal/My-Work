@@ -1,0 +1,47 @@
+{% extends 'admin/admin_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/sstyle.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main">
+    <div class="main-div">
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>State</th>
+                <th>District</th>
+                <th>City</th>
+                <th>Email</th>
+                <th>Id Proof</th>
+                <th colspan="2">Operations</th>
+            </tr>
+
+            {% for i in page_obj %}
+            <tr>
+                <td>{{i.firstname}}</td>
+                <td>{{i.lastname}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.state}}</td>
+                <td>{{i.district}}</td>
+                <td>{{i.city}}</td>
+                <td>{{i.email}}</td>
+                <td><img alt="" height="50px" src="{{i.id_proof.url}}" width="50px"></td>
+
+                <td><a class="btn btn-success" href="{% url 'approve' login_id  i.reg_id %}">Approve</a>
+                </td>
+                <td><a class="btn btn-danger" href="{% url 'reject' login_id  i.reg_id  %}">Reject</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</section>
+{% endblock content %}

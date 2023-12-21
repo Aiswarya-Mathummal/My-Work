@@ -1,0 +1,71 @@
+{% extends 'customer/customer_nav.html' %}
+{% load static %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+<html>
+{% block content %}
+<body>
+<div class="col-xs-12"  style="padding:10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-warning" role="alert" style="width:50%;">
+                <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+
+<div class="wrapper">
+    <h2 align="center"><u>Request</u></h2>
+
+
+    <form action="#" method="POST" style="width:500px" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <div align="center" >
+        <input type="submit" style="width:50%" class="btn btn-outline-success btn-lg" value="Request" onclick="file(event)">
+    </div>
+</form>
+</div>
+
+<br><br><br><br>
+    <script src="{% static 'jq/jquery.min.js' %}"></script>
+        <script>
+   $(document).ready(function(){
+ function  fetchqty(qty,type) {
+    $.ajax({
+            type: 'GET',
+            url: '/calculate_price/',  // URL to your Django view
+            data: { 'quantity': qty,'type':type },
+            success: function(result) {
+            $("#result").empty();
+                $('#id_price').val(result.price);
+
+             }, error: function (d1) {
+            console.log(d1)
+        }
+        });
+   }
+
+                $("#id_fuel_type").on("change", function() {
+                var qty = $("#id_quantity").val();
+                var type = $(this).val();
+                fetchqty(qty,type);
+            });
+
+            $("#id_quantity").on("change", function() {
+                var type = $("#id_fuel_type").val();
+                var qty = $(this).val();
+                fetchqty(qty,type);
+            });
+
+ });
+</script>
+</body>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'admin/admin_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+<head>
+
+
+    <title> Registration </title>
+
+
+
+
+</head>
+{% block content %}
+<br>
+<body>
+<h2 style="color:grey"><u>Add Details</u></h2><br>
+    <link href="{% static 'css/style2.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+
+
+    <form action="#" method="POST" enctype="multipart/form-data" style="width:30%">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+        <input type="submit" style="width:90%" class="btn btn-outline-success btn-lg" onclick="file(event)">
+</form>
+
+</body>
+{% endblock content %}

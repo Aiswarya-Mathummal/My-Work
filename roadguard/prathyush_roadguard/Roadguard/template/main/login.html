@@ -1,0 +1,24 @@
+{%  extends "main/main_nav.html" %}
+
+{% block content %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+         <div class="container">
+    <div class="row justify-content-center">
+
+      <div class="col-md-6"> <!-- Change col-md-6 to col-md-12 -->
+        <h1 class="mt-5 mb-4">Login Page</h1>
+        <form action="" method="post" enctype="multipart/form-data" class="mb-4">
+          {% csrf_token %}
+                        {% bootstrap_form form%}
+          <div class="button-container">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+ {% endblock  %}

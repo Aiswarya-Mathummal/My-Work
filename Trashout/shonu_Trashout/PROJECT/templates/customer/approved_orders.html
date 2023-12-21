@@ -1,0 +1,75 @@
+{% extends 'customer/customer_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main">
+    {% if count == 0 %}
+    <center>
+        <div class="col-xs-12" style="padding:10px;">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div class="alert alert-warning" role="alert" style="width:50%;">
+                    <li %} %} class="{{ message.tags }}" endif if message.tags style="list-style-type: none;" {% {%>{{ message }}
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </center>
+    {% else %}
+    <div class="main-div">
+        <table border="1" class="table table-hover table-responsive">
+            <tr>
+                <th>BUYER</th>
+                <th>DATE</th>
+                <th>NAME</th>
+                <th>ADDRESS</th>
+                <th>PHONE NUMBER</th>
+                <th>STATE</th>
+                <th>DISTRICT</th>
+                <th>CITY</th>
+                <th>EMAIL</th>
+                <th>PRODUCT</th>
+                <th>PRODUCT NAME</th>
+                <th>PRODUCT PRICE</th>
+                <th>STATUS</th>
+                <th colspan="2">Operations</th>
+            </tr>
+
+            {% for i in page_obj %}
+            <tr>
+
+                <td><img alt="" height="100px" src="{{i.buyer_id.profile_pic.url}}" width="100px"></td>
+                <td>{{i.requested_on}}</td>
+                <td>{{i.seller_id.firstname}} {{i.seller_id.lastname}}</td>
+                <td>{{i.seller_id.address}}</td>
+                <td>{{i.seller_id.phone}}</td>
+                <td>{{i.seller_id.state}}</td>
+                <td>{{i.seller_id.district}}</td>
+                <td>{{i.seller_id.city}}</td>
+                <td>{{i.seller_id.email}}</td>
+                <td ><img alt="" height="100px" src="{{i.product_id.image.url}}" width="100px"></td>
+                <td>{{i.product_id.name}}</td>
+                <td>₹ {{i.product_id.price}}</td>
+                <td>Pickup Awaiting</td>
+
+                <td><a class="btn btn-danger" href="{% url 'cancel_order' login_id i.req_id %}">Cancel Order</a></td>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <center>{% include "pagination.html" %}</center>
+    {% endif %}
+
+</section>
+{% endblock content %}

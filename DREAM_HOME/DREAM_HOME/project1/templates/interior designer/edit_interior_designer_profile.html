@@ -1,0 +1,33 @@
+{% extends 'interior designer/interior_designer_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+{% block content %}
+<section style="padding:80px;background-color:#1a1a1a;">
+    <form action="" enctype="multipart/form-data" method="post" style="width:500px" >
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Interior Designer Id</label>
+                <input class="form-control" disabled type="text" value="{{interior_designer.interior_designer_id}}">
+            </div>
+            {% bootstrap_form form_key %}
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input class="form-control" disabled type="text" value="{{interior_designer.email}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input class="form-control" disabled type="password" value="{{interior_designer.password}}">
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-outline-success mx-auto d-grid gap-2 col-6" type="submit" value="Update">
+            </div>
+            <br>
+            <br>
+        </form>
+</section>
+{% endblock content %}

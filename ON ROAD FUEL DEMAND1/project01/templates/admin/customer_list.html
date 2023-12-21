@@ -1,0 +1,43 @@
+{% extends 'admin/admin_nav.html' %}
+{% load static %}
+
+<head>
+
+    <title>Title</title>
+
+</head>
+{% block content %}
+<body>
+<section class="main">
+    <h1 style="color:white" align="center"><u><b>User Details</b></u></h1>
+    <div class="main-div">
+
+<table border="1" class="table table-hover">
+    <tr>
+        <th>User id</th>
+        <th>Name</th>
+        <th>Phone No</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th colspan="2" style="text-align: center;">Operations</th>
+
+    </tr>
+
+        {% for i in user %}
+    <tr>
+        <td>{{i.user_id}}</td>
+        <td>{{i.Name}}</td>
+        <td>{{i.phone_no}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.password}}</td>
+        <td><a href="{% url 'editu'  i.user_id %}">Edit</a></td>
+        <td><a href="{% url 'Delete' login_id i.user_id %}">Delete</a></td>
+
+        {% endfor %}
+    </tr>
+
+</table>
+    </div>
+</section>
+</body>
+{% endblock content %}

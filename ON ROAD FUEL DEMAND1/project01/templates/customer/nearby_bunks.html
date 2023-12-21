@@ -1,0 +1,32 @@
+{% extends 'customer/customer_nav.html' %}
+{% load static %}
+{% block content %}
+<body>
+<br><br>
+ <section class="main">
+<!--    <h1 align="center"><u><b>Fuel Details</b></u></h1>-->
+    <div class="main-div">
+
+<table border="1" class="table table-hover" style="width:700px; color:white">
+    <tr>
+        <th>Bunk id</th>
+        <th>Bunk name</th>
+        <th>Request</th>
+    </tr>
+
+
+
+{% for i in bunk_data %}
+    <tr>
+        <td>{{i.bunk_id}}</td>
+        <td>{{i.name}}</td>
+        <td><a href="{% url 'req_form' login_id i.bunk_id %}">Request</a></td>
+{% endfor %}
+    </tr>
+</table>
+
+    </div>
+ </section>
+</body>
+<br><br><br><br><br><br><br><br>
+{% endblock content %}

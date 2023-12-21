@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Trash out</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/core-style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+
+</head>
+
+
+
+
+
+
+
+<div id="wrapper">
+
+    <!-- ****** Header Area Start ****** -->
+    <header class="header_area">
+        <!-- Top Header Area Start -->
+        <div class="top_header_area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-end">
+
+                    <div class="col-lg-12" style="display:flex; align-item:center;justify-content:center;">
+                        <div class="top_single_area d-flex align-items-center">
+                            <!-- Logo Area -->
+                            <div class="top_logo">
+                                <a href="#"><img alt="" src="{% static 'img/core-img/logo.png' %}"></a>
+                            </div>
+                            <!-- Cart & Menu Area -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Header Area End -->
+        <div class="main_header_area">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col-12 d-md-flex justify-content-between">
+                        <!-- Header Social Area -->
+                        <div class="header-social-area">
+                            <a href="#"><span class="karl-level">Share</span> <i aria-hidden="true"
+                                                                                 class="fa fa-pinterest"></i></a>
+                            <a href="#"><i aria-hidden="true" class="fa fa-facebook"></i></a>
+                            <a href="#"><i aria-hidden="true" class="fa fa-twitter"></i></a>
+                            <a href="#"><i aria-hidden="true" class="fa fa-linkedin"></i></a>
+                        </div>
+                        <!-- Menu Area -->
+                        <div class="main-menu-area">
+                            <nav class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0">
+                                <button class="navbar-toggler ms-auto me-0" data-bs-target="#navbarCollapse"
+                                        data-bs-toggle="collapse"
+                                        type="button">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarCollapse">
+                                    <div class="navbar-nav ms-auto">
+                                        <a class="nav-item nav-link active"
+                                           href="{% url 'customer_home' login_id %}">HOME</a>
+
+                                        <li class="nav-item dropdown">
+                                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                               href="#" id="karlDropdown " role="button">SHOP</a>
+                                            <div aria-labelledby="karlDropdown" class="dropdown-menu">
+                                                 {% for i in categories %}
+                                                <a class="dropdown-item" href="{% url 'get_products' login_id  i.category_id %}">{{ i.category_name }}</a>
+                                                {% endfor %}
+                                            </div>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                               href="#" id="karlDropdown " role="button">CUSTOMERS</a>
+                                              <div aria-labelledby="karlDropdown" class="dropdown-menu">
+                                                <a class="dropdown-item" href="{% url 'view_product_request' login_id  %}">PRODUCT REQUEST </a>
+                                                <a class="dropdown-item" href="{% url 'view_approved_product_request' login_id  %}">APPROVED REQUESTS</a>
+                                                <a class="dropdown-item" href="{% url 'sold_products' login_id  %}">SOLD PRODUCTS</a>
+                                              </div>
+                                        </li>
+                                         <li class="nav-item dropdown">
+                                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                               href="#" id="karlDropdown " role="button">RECYCLING UNIT</a>
+                                              <div aria-labelledby="karlDropdown" class="dropdown-menu">
+                                                <a class="dropdown-item" href="{% url 'view_expired_products' login_id  %}">EXPIRED PRODUCTS</a>
+                                                <a class="dropdown-item" href="{% url 'accepted_products' login_id  %}">ACCEPTED PRODUCTS</a>
+                                                <a class="dropdown-item" href="{% url 'recycle_sold_products' login_id  %}">SOLD PRODUCTS</a>
+                                              </div>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                               href="#" id="karlDropdown " role="button">ORDERS</a>
+                                              <div aria-labelledby="karlDropdown" class="dropdown-menu">
+                                                <a class="dropdown-item" href="{% url 'orders' login_id  %}">ORDERS</a>
+                                                <a class="dropdown-item" href="{% url 'approved_orders' login_id  %}">APPROVED ORDERS</a>
+                                                <a class="dropdown-item" href="{% url 'order_history' login_id  %}">ORDER HISTORY</a>
+                                              </div>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                               href="#" id="karlDropdown " role="button">My Products</a>
+                                              <div aria-labelledby="karlDropdown" class="dropdown-menu">
+                                                <a class="dropdown-item" href="{% url 'customer_product_list' login_id  %}">MY PRODUCTS </a>
+                                                <a class="dropdown-item" href="{% url 'add_product' login_id  %}">ADD NEW PRODUCT</a>
+                                              </div>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                               href="#" id="karlDropdown " role="button">ITS ME</a>
+                                            <div aria-labelledby="karlDropdown" class="dropdown-menu">
+                                                <a class="dropdown-item" href="{% url 'customer_profile' login_id %}">PROFILE</a>
+                                                <a class="dropdown-item" href="">ABOUT</a>
+                                                <a class="dropdown-item" href="">CONTACT US</a>
+
+                                            </div>
+                                        </li>
+                                        <div class="navbar-nav ms-auto">
+                                            <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav></div>
+                        </nav></nav>
+                        </div>
+                        <!-- Help Line -->
+                        <div class="help-line">
+                            <a href="tel:+346573556778"><i class="ti-headphone-alt"></i> +34 657 3556 778</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %} {% endblock content %}
+
+    <!-- ****** Footer Area Start ****** -->
+    <footer class="footer_area">
+        <div class="container">
+            <div class="row">
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="single_footer_area">
+                        <div class="footer-logo">
+                            <img alt="" src="{% static 'img/core-img/logo.png' %}">
+                        </div>
+                        <div class="copywrite_text d-flex align-items-center">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                    <div class="single_footer_area">
+                        <ul class="footer_widget_menu">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Faq</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                    <div class="single_footer_area">
+                        <ul class="footer_widget_menu">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Our Policies</a></li>
+                            <li><a href="#">Afiliates</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-lg-5">
+                    <div class="single_footer_area">
+                        <div class="footer_heading mb-30">
+                            <h6>Subscribe to our newsletter</h6>
+                        </div>
+                        <div class="subscribtion_form">
+                            <form action="#" method="post">
+                                <input class="mail" name="mail" placeholder="Your email here" type="email">
+                                <button class="submit" type="submit">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+
+            <!-- Footer Bottom Area Start -->
+            <div class="footer_bottom_area">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer_social_area text-center">
+                            <a href="#"><i aria-hidden="true" class="fa fa-pinterest"></i></a>
+                            <a href="#"><i aria-hidden="true" class="fa fa-facebook"></i></a>
+                            <a href="#"><i aria-hidden="true" class="fa fa-twitter"></i></a>
+                            <a href="#"><i aria-hidden="true" class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ****** Footer Area End ****** -->
+</div>
+<!-- /.wrapper end -->
+
+<!-- jQuery (Necessary for All JavaScript Plugins) -->
+<script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+<!-- Popper js -->
+<script src="{% static 'js/popper.min.js' %}"></script>
+<!-- Bootstrap js -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Plugins js -->
+<script src="{% static 'js/plugins.js' %}"></script>
+<!-- Active js -->
+<script src="{% static 'js/active.js' %}"></script>
+<script src="{% static 'jq/jquery.min.js' %}"></script>
+<script>
+$(document).ready(function () {
+    $uid={{ login_id }}
+    $.ajax({
+        url: '/check_expiry_date/',
+        type: 'get',
+        datatype: 'json',
+        success: function (d) {
+            }, error: function (d1) {
+            console.log(d1)
+        }
+    });
+    });
+</script>
+</body>
+
+</html>

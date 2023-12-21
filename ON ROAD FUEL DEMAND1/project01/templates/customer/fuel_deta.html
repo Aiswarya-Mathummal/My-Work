@@ -1,0 +1,38 @@
+{% extends 'customer/customer_nav.html' %}
+{% load static %}
+<head>
+
+    <title>fuel details</title>
+
+</head>
+{% block content %}
+<body>
+
+ <section class="main">
+    <h1 align="center"><u><b>Fuel Details</b></u></h1>
+    <div class="main-div">
+
+<table border="1" class="table table-hover" style="width:800px;color:white">
+    <tr>
+        <th>Fuel id</th>
+        <th>Fuel type</th>
+        <th>Rate/L</th>
+<!--        <th>Edit</th>-->
+    </tr>
+
+        {% for i in user %}
+    <tr>
+        <td>{{i.fuel_id}}</td>
+        <td>{{i.fuel_type}}</td>
+        <td>{{i.Rate}}</td>
+<!--        <td><a href="{% url 'edit' i.fuel_id %}">Edit</a></td>-->
+
+        {% endfor %}
+    </tr>
+
+</table>
+<br><br><br><br><br><br>
+    </div>
+ </section>
+</body>
+{% endblock content %}

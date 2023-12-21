@@ -1,0 +1,68 @@
+{% extends 'tailor/tailor_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main">
+    {% if count == 0 %}
+     <center>
+    <div class="col-xs-12"  style="padding:10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-warning" role="alert" style="width:50%;">
+                <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    </center>
+    {% else %}
+    <div class="main-div">
+        <table border="1" class="table table-hover">
+            <tr>
+                <th>Request Id</th>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Estimate delivery date</th>
+                <th colspan="2">Operations</th>
+            </tr>
+
+            {% for i in page_obj %}
+            <tr data-href="{% url 'track_request' login_id i.req_id %}" >
+                <td>{{i.req_id}}</td>
+                <td>{{i.user_id.firstname}}{{i.user_id.lastname}}</td>
+                <td>{{i.user_id.email}}</td>
+                <td>{{i.delivery_date}}</td>
+                <td><a class="btn btn-success" href="{% url 'accept_request' login_id i.req_id %}">Accept</a>
+                </td>
+                <td><a class="btn btn-danger" href="{% url 'reject_request' login_id i.req_id %}">Reject</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <center>{% include "pagination.html" %}</center>
+    {% endif %}
+    <script language="JavaScript">
+  document.addEventListener("DOMContentLoaded", function() {
+    const tableRows = document.querySelectorAll("tr[data-href]");
+
+    tableRows.forEach(function(row) {
+      row.addEventListener("click", function() {
+        const url = this.getAttribute("data-href");
+        if (url) {
+          window.location.href = url; // Redirect to the specified URL
+        }
+      });
+    });
+  });
+</script>
+</section>
+{% endblock content %}

@@ -1,0 +1,81 @@
+{% extends 'user/user_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main">
+    {% if count == 0 %}
+    <center>
+        <div class="col-xs-12" style="padding:10px;">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div class="alert alert-warning" role="alert" style="width:50%;">
+                    <li %} %} class="{{ message.tags }}" endif if message.tags style="list-style-type: none;" {% {%>{{ message }}
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </center>
+    {% else %}
+    <center>
+        <div class="col-xs-12" style="padding:10px;">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div class="alert alert-warning" role="alert" style="width:50%;">
+                    <li %} %} class="{{ message.tags }}" endif if message.tags style="list-style-type: none;" {% {%>{{ message }}
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </center>
+    <div class="main-div">
+        <table border="1" class="table table-hover">
+            <tr>
+
+                <th>DATE</th>
+                <th>NAME</th>
+                <th>ADDRESS</th>
+                <th>PHONE_NUMBER</th>
+                <th>STATE</th>
+                <th>CITY</th>
+                <th>COMPLAINT</th>
+                <th>VEHICLE TYPE</th>
+                <th>IMAGE</th>
+                <th>view Previous chats</th>
+            </tr>
+
+            {% for i in page_obj %}
+            <tr >
+
+                <td>{{i.requested_on}}</td>
+                <td>{{i.center_id.name}}</td>
+                <td>{{i.center_id.address}}</td>
+                <td>{{i.center_id.phoneNo}}</td>
+                <td>{{i.center_id.state}}</td>
+                <td>{{i.center_id.city}}</td>
+                <td>{{i.complaint}}</td>
+                <td>{{i.vehicle_type}}</td>
+                <td ><img alt="" height="50px" src="{{i.image.url}}" width="50px"></td>
+                <td><a class="btn btn-primary" href="{% url 'previous_user_chat' reg_id i.req_id %}">View Previous Chat</a></td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <center>{% include "pagination.html" %}</center>
+    {% endif %}
+
+</section>
+{% endblock content %}

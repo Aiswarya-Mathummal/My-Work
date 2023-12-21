@@ -1,0 +1,291 @@
+{% extends 'users/user_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+{% block content %}
+<section class="main" style="height:auto;">
+    <center><h4> Confirm Booking  </h4></center>
+    <div class="main-div" style="width:100%">
+        <form action="" method="post"  style="width:100%">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Patient details</h5>
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name</label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.name}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Age</label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.age}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Gender</label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.gender}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Reason</label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.reason}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Requestor details</h5>
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name</label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.requestor_id.firstname}} {{patient.requestor_id.lastname}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Address</label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.requestor_id.address}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Phone No</label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.requestor_id.phone_no}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.requestor_id.email}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Hospital details</h5>
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                                <img class="rounded mx-auto d-block"  height="100px" width="150px" src="{{patient.hospital.image.url}}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name</label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.hospital.name}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Address</label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.hospital.address}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Phone No </label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{patient.hospital.phone_no}}
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Ambulance Driver details</h5>
+                                                        <table class="table">
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                            <img class="rounded mx-auto d-block"  height="150px" width="150px" src="{{driver.profile_pic.url}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="mb-3">
+                                            <img class="rounded mx-auto d-block"  height="150px" width="250px" src="{{driver.id.url}}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name </label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{driver.firstname}} {{driver.lastname}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Phone No  </label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{driver.phone_no}}
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Ambulance details</h5>
+                            <table class="table">
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="mb-3">
+                                                <img class="rounded mx-auto d-block"  height="250px" width="350px" src="{{ambulance.image.url}}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="mb-3">
+                                        <label class="form-label">Vehicle No </label>
+                                        </div>
+                                    </th>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{ambulance.vehicle_no}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+            <br><br>
+            <div class="mb-3">
+               <center><input class="btn btn-primary mx-auto d-grid gap-2 col-lg-6" type="submit" value="Confirm Booking"></center>
+            </div>
+
+        </form>
+    </div>
+    <div class="mb-3">
+                <center><a class="btn btn-danger mx-auto d-grid gap-2 col-lg-6"
+                   href="{% url 'cancel_booking' login_id patient.patient_id %}"> Cancel booking</a></center>
+        </div>
+</section>
+
+{% endblock content %}

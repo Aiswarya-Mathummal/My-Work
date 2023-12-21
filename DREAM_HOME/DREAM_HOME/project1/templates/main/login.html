@@ -1,0 +1,57 @@
+{% extends 'main/main_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% block content %}
+
+<!--<section style="padding: 80px;background-image: url('/static/images/image-2.jpg');;"> -->
+<style>
+
+
+</style>
+
+
+<section class="main" style="padding: 80px;background-image: url('/static/images/image-2.jpg');;">
+<!--<section style="padding: 80px;background-color:#132043;">-->
+
+
+        <center>
+
+    <div class="col-xs-12"  style="">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-warning" role="alert" style="width:50%;">
+                <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    </center>
+<div class="main-div">
+     <div class="form-box">
+    <div class="form-value">
+        <form action="" method="POST" enctype="multipart/form-data" style="" >
+            <h2>Login</h2>
+              {% csrf_token %}
+              {% bootstrap_form form %}
+            <br>
+            <br>
+              <input type="submit" class="button" value="LOGIN">
+        </form>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+</section>
+{% endblock content %}
+
+
+

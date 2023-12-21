@@ -1,0 +1,46 @@
+{% extends 'users/users_nav.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+{% block content %}
+<section class="main">
+    <center><h4> Report Offence </h4></center>
+                    <center>
+                  <ul class="custom-list">
+                    {% for message in messages %}
+                      <div class="custom-alert alert alert-info" role="alert"  style="width:50%;">
+                        <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                      </div>
+                      {% endfor %}
+                  </ul>
+                </center>
+    <div class="main-div">
+        <form action="" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form_key %}
+            <div class="mb-3">
+                <label class="form-label">Select State:</label>
+                <select  class="form-control" id="state" name="state">
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Select City:</label>
+                <select  class="form-control" id="city" name="city">
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Select Officer:</label>
+                <select name="officers" id="officers" class="form-control">
+                </select>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary mx-auto d-grid gap-2 col-12" id="get-location-button" type="submit" value="Save" >
+            </div>
+            <br>
+            <br>
+        </form>
+
+    </div>
+{% endblock content %}

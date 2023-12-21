@@ -1,0 +1,39 @@
+{% extends 'customers/customer_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main" style="height:auto;">
+        <center>
+    <div class="col-xs-12"  style="padding:10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-warning" role="alert" style="width:50%;">
+                <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    </center>
+    <div class="main-div">
+        <div>
+            <img alt="" class="img-fluid" height="600px" src="{{ design.image.url }}" width="600px">
+            <div class="p-4">
+                <h4 class="mb-3">{{ design.name }}</h4>
+                <p>{{ design.description }}</p>
+                <h4 class="text-primary">₹ {{ design.price }}</h4>
+            </div>
+            <a class="btn btn-dark rounded-pill  mx-auto d-grid gap-2 col-12" href="{% url 'request_tailor' login_id design.design_id %}">Sew This Pattern   <i class='fas fa-tshirt' style='font-size:larger;color:white'></i></a>
+        </div>
+
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,190 @@
+{% extends 'hospital/hospital_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+{% block content %}
+<section class="main" style="height:auto;">
+    <div class="main-div" style="width:100%">
+        <form action="" method="post"  style="width:100%">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <center><h2 class="card-title">Patient details</h2><h6 class="card-title" style="color:gray;">Booked on: {{booking.booked_on}} </h6></center>
+
+                            <h3>Ambulance Status</h3><center><div class="alert alert-warning" role="alert" style="width:100%;">{{booking.driver_status}}</div></center>
+
+                            <table class="table responsive">
+
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Patient details</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name</label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{ booking.patient_id.name }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Age</label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{ booking.patient_id.age}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Gender</label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{booking.patient_id.gender}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Reason</label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{booking.patient_id.reason}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><h6>Requestor details</h6></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{booking.patient_id.requestor_id.firstname}} {{booking.patient_id.requestor_id.lastname}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Address : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{booking.patient_id.requestor_id.address}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Phone No : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{booking.patient_id.requestor_id.phone_no}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Email : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{booking.patient_id.requestor_id.email}}
+                                        </div>
+                                    </td>
+                                </tr>
+                               <tr>
+                                <td colspan="2" style="align-item:center;"><h6 class="card-title">Ambulance Driver details</h6></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                            <img class="rounded mx-auto d-block"  height="150px" width="150px" src="{{booking.driver_id.profile_pic.url}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="mb-3">
+                                            <img class="rounded mx-auto d-block"  height="150px" width="250px" src="{{booking.driver_id.id.url}}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{booking.driver_id.firstname}} {{booking.driver_id.lastname}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Phone No : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{booking.driver_id.phone_no}}
+                                        </div>
+                                    </td>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="mb-3">
+                <center><a class="btn btn-primary mx-auto d-grid gap-2 col-lg-6" href="{% url 'patient_details' login_id %}"> Go to Patient Details</a></center>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

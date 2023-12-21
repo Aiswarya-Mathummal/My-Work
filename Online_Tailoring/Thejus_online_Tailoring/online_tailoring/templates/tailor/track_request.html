@@ -1,0 +1,252 @@
+{% extends 'tailor/tailor_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+{% block content %}
+<section class="main" style="height:auto;">
+    <div class="main-div" style="width:100%">
+        <form action="" method="post"  style="width:100%">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <center><h1 class="card-title">Request details</h1><h4 class="card-title" style="color:gray;">Requested on: {{req.requested_on}} </h4></center>
+                            <table class="table responsive">
+                               <tr>
+                                    <th colspan="2">customer details</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{req.user_id.firstname}}&nbsp;{{req.user_id.lastname}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Address : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{req.user_id.address}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Phone No : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{req.user_id.phone_no}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Email : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{req.user_id.email}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label" style="color:red;">Estimate Delivery Date: </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td style="color:red;">
+                                        <div class="mb-3">
+                                        {{req.delivery_date}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Design details</th>
+                                </tr>
+                                 <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                            <img class="rounded mx-auto d-block"  height="300px" width="300px" src="{{req.design_id.image.url}}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name</label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{ req.design_id.name }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Designer Name</label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{ req.design_id.designer_id.firstname }} {{ req.design_id.designer_id.lastname }}
+                                        </div>
+                                    </td>
+                                </tr>
+
+                               <tr>
+                                <th class="card-title">Fabrics Choosen</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="align-item:center;">
+                                        <div class="mb-3">
+                                            <img class="rounded mx-auto d-block"  height="150px" width="150px" src="{{fabric1.image.url}}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{fabric1.name}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Price </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        ₹ {{fabric1.price}} / mtr
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% if fabric2 != '' %}
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                            <img class="rounded mx-auto d-block"  height="150px" width="150px" src="{{fabric2.image.url}}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{fabric2.name}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Price </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        ₹ {{fabric2.price}} / mtr
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                                {% if fabric3 != '' %}
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                            <img class="rounded mx-auto d-block"  height="150px" width="150px" src="{{fabric3.image.url}}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Name : </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        {{fabric3.name}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="mb-3">
+                                        <label class="form-label">Price </label>
+                                        </div>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <div class="mb-3">
+                                        ₹ {{fabric3.price}} / mtr
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                                 <tr style="text-align:center;">
+                                    <td colspan="3" style="text-align:center;">
+                                       <a class="btn btn-success" href="{% url 'accept_request' login_id req.req_id %}">Accept</a>
+                                       <a class="btn btn-danger" href="{% url 'reject_request' login_id req.req_id %}">Reject</a>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="mb-3">
+                <center><a class="btn btn-primary mx-auto d-grid gap-2 col-lg-6" href="{% url 'view_sew_requests' login_id %}"> Go to Request History</a></center>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

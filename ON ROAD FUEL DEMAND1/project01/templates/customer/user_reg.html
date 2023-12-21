@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration </title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+<!--        <style>-->
+
+<!--        .fade-in {-->
+<!--            animation: fadein 5s; /* Animation properties */-->
+
+<!--        }-->
+
+<!--        @keyframes fadein {-->
+<!--            0% {-->
+<!--                opacity: 0;-->
+<!--            }-->
+<!--            100% {-->
+<!--                opacity: 1;-->
+<!--            }-->
+<!--        }-->
+
+<!--#animatedImage {-->
+<!--    position: absolute;-->
+<!--    top: 0;-->
+<!--    left: 0;-->
+<!--    width: 100%;-->
+<!--    height: 100%;-->
+<!--    object-fit: cover; /* This ensures the image covers the entire container */-->
+<!--    z-index: 1;-->
+<!--  }-->
+
+    /* Add some basic styling for the form */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        background-image: url('static/images/pngtree.jpg');
+        background-size: cover;
+    }
+    .container {
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+        input[type="text"], input[type="email"], input[type="password"] {
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+
+
+</style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var image = document.getElementById('animatedImage');
+
+            setTimeout(function() {
+                image.style.display = 'none';
+            }, 5000);
+        });
+
+    </script>
+
+</head>
+<body>
+<div class="wrapper">
+    <h2>Registration</h2>
+
+
+    <form action="#" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text">
+        <h3>Already have an account? <a href="{% url 'login' %}">Login now</a></h3>
+    </div>
+    <input type="submit" value="submit" onclick="file(event)">
+</form>
+</div>
+</body>
+</html>

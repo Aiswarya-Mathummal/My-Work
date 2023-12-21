@@ -1,0 +1,95 @@
+<!--{% extends 'main/main_nav.html' %}-->
+
+{% load static %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+
+
+
+    <style>
+
+
+
+
+
+     body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        background-image: url('/static/images/bg.jpg');
+        background-size: cover;
+    }
+    .container {
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        border: 2px solid #FF69B4; /* Pink border color */
+
+        font-size: 16px;
+    }
+        input[type="text"], input[type="email"], input[type="password"] {
+        padding: 5px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+
+    </style>
+
+
+</head>
+{% block content %}
+<div class="col-xs-12"  style="padding:10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-warning" role="alert" style="width:50%;">
+                <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+<body>
+<div class="wrapper">
+    <br><br><br><br><br>
+<h2 align="center" style="color:red"><b><u>LOGIN</u></b></h2><br>
+
+    <form action="#" method="POST" enctype="multipart/form-data" id="" style="width:400px">
+
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <br>
+        <div align="center">
+        <input type="submit" value="Login" style="width:100%" class="btn btn-outline-success btn-lg" color="blue" onclick="file(event)"><br>
+</div>
+    </form>
+</div>
+
+
+</body>
+{% endblock content %}

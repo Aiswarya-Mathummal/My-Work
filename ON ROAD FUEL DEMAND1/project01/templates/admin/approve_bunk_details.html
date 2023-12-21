@@ -1,0 +1,49 @@
+{% extends 'admin/admin_nav.html' %}
+{% load static %}
+{% block content %}
+<body>
+
+    <section class="main">
+    <h1 align="center"><u><b>Bunk Details</b></u></h1>
+    <div class="main-div">
+
+<table border="1" class="table table-hover">
+
+
+    <tr>
+        <th>Bunk id</th>
+        <th>Name</th>
+        <th>image</th>
+        <th>state</th>
+        <th>District</th>
+        <th>city</th>
+        <th colspan="2" style="text-align: center;">Operations</th>
+
+    </tr>
+
+        {% for i in user %}
+    <tr>
+        <td>{{i.bunk_id}}</td>
+        <td>{{i.name}}</td>
+        {% if i.image %}
+	            <td ><img alt="" height="50px" src="{{i.image.url}}" width="50px"></td>
+	            {% else %}
+	             <td ><img alt="" height="50px" src="{% static 'images/blank-profile.png' %}" width="50px"></td>
+{% endif%}
+
+        <td>{{i.state}}</td>
+        <td>{{i.district}}</td>
+        <td>{{i.city}}</td>
+        <td><a href="{% url 'approve' login_id i.bunk_id %}">Approve</a></td>
+        <td><a href="{% url 'reject' login_id
+        i.bunk_id %}">Reject</a></td>
+
+
+        {% endfor %}
+    </tr>
+
+</table>
+    </div>
+</section>
+</body>
+{% endblock content %}

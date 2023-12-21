@@ -1,0 +1,61 @@
+{% extends 'ambulance_driver/ambulance_driver_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main" style="height:auto;">
+    <center><h4> Ambulance Details </h4></center>
+        <center>
+    <div class="col-xs-12"  style="padding:10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-warning" role="alert" style="width:50%;">
+                <li style="list-style-type: none;" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    </center>
+    <div class="main-div">
+        <form action="" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <img class="rounded mx-auto d-block"  height="350px" width="350px" src="{{ambulance.image.url}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ambulance Id</label>
+                <input class="form-control" disabled type="text" value="{{ambulance.ambulance_id}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Owner Id</label>
+                <input class="form-control" disabled type="text" value="{{ambulance.owner_id}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Owner Name</label>
+                <input class="form-control" disabled type="text" value="{{ambulance.owner_id.firstname}} {{ambulance.owner_id.lastname}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Vehicle Identification Number</label>
+                <input class="form-control" disabled type="text" value="{{ambulance.vehicle_no}}">
+            </div>
+
+            <div class="mb-3">
+                <a class="btn btn-primary mx-auto d-grid gap-2 col-12"
+                   href="{% url 'edit_ambulance_details' login_id ambulance.ambulance_id %}"> Edit</a>
+            </div>
+            <br>
+            <br>
+        </form>
+
+    </div>
+</section>
+
+{% endblock content %}

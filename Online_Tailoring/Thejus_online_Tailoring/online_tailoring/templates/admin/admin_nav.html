@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Tailor | Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style1.css' %}">
+</head>
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/logo/loder.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start-->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header_area">
+            <div class="main-header">
+             <div class="header-bottom header-sticky">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="{% url 'admin_home' login_id %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                </div>
+                <div class="header-left  d-flex f-right align-items-center">
+                    <!-- Main-menu -->
+                    <div class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation">
+                            <li><a href="{% url 'admin_home' login_id %}">Home</a></li>
+                            <li><a href="{% url 'admin_profile' login_id %}">Profile</a></li>
+                                <li>
+                                    <div class="dropdown">
+                                        <button class="btn11 btn-default dropdown-toggle" data-toggle="dropdown"
+                                                type="button">Users
+                                            <span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{% url 'customer_list' login_id %}" tabindex="-1">customers</a></li>
+                                            <li class="dropdown-submenu">
+                                                <a class="test" href="#" tabindex="-1">Tailors<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{% url 'tailor_list' login_id %}" tabindex="-1">Tailors</a></li>
+                                                    <li><a href="{% url 'approvetailors' login_id %}" tabindex="-1">Approve Tailors</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown-submenu">
+                                                <a class="test" href="#" tabindex="-1">Designers<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a  tabindex="-1" href="{% url 'designer_list' login_id %}">Designers</a></li>
+                                                    <li><a tabindex="-1" href="{% url 'approvedesigners' login_id %}">Approve Designers</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown-submenu">
+                                                <a class="test" href="#" tabindex="-1">Manufacturers<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a  tabindex="-1" href="{% url 'manufacturer_list' login_id %}">Manufacturers</a></li>
+                                                    <li><a tabindex="-1" href="{% url 'approvemanufacturers' login_id %}">Approve Manufacturers</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="dropdown-submenu">
+                                                <a class="test" href="#" tabindex="-1">Delivery Agents<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a  tabindex="-1" href="{% url 'delivery_agent_list' login_id %}">Delivery Agents</a></li>
+                                                    <li><a tabindex="-1" href="{% url 'delivery_agent_reg' login_id %}">Add Delivery Agent</a></li>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                            <li><a href="#">Category</a>
+                                    <ul class="submenu">
+                                        <li><a href="{% url 'category_list' login_id %}">Categories</a></li>
+                                        <li><a href="{% url 'add_category' login_id %}">Add Category</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'admin_designs_list' login_id %}">Designs</a></li>
+                                <li><a href="{% url 'admin_materials_list' login_id %}">Materials</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- left Btn -->
+                    <div class="header-right-btn f-right d-none d-lg-block  ml-30">
+                        <a href="{% url 'logout' %}" class="header-btn">Logout</a>
+                    </div>
+                </div>
+                <!-- Mobile Menu -->
+                <div class="col-12">
+                    <div class="mobile_menu d-block d-lg-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>
+
+{% block content %}
+{% endblock content %}
+
+
+<footer>
+    <div class="footer-wrapper section-bg2 pl-100"  data-background="{% static 'assets/img/gallery/footer-bg.png' %}">
+        <!-- Footer Start-->
+        <div class="footer-area footer-padding">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <!-- logo -->
+                                <div class="footer-logo mb-35">
+                                    <a href="index.html"><img src="{% static 'assets/img/logo/logo2_footer.png' %}" alt=""></a>
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="footer-pera">
+                                        <p>Lorem ipsum dolor sit amet,
+                                        consectetur adipiscing.</p>
+                                    </div>
+                                    <ul class="mb-40">
+                                        <li class="number"><a href="#">(80) 783 367-3904</a></li>
+                                        <li class="number2"><a href="#">(80) 783 367-3904</a></li>
+                                    </ul>
+                                </div>
+                                <!-- social -->
+                                <div class="footer-social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Our solutions</h4>
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Services</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-bottom area -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 ">
+                            <div class="footer-copy-right text-right">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- Footer End-->
+          <!-- Map -->
+          <div class="map-area">
+            <img src="{% static 'assets/img/gallery/map.png' %}" alt="">
+        </div>
+    </div>
+</footer>
+<!-- Scroll Up -->
+<div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+
+<!-- JS here -->
+<script src="{% static 'assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'assets/js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/animated.headline.js' %}"></script>
+<script src=".% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'assets/js/gijgo.min.js' %}"></script>
+<!-- Nice-select, sticky -->
+<script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+<!-- Progress -->
+<script src="{% static 'assets/js/jquery.barfiller.js' %}"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'assets/js/hover-direction-snake.min.js' %}"></script>
+
+<!-- contact js -->
+<script src="{% static 'assets/js/contact.js' %}"></script>
+<script src="{% static 'assets/js/jquery.form.js' %}"></script>
+<script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'assets/js/mail-script.js' %}"></script>
+<script src="{% static 'assets/js/jquery.ajaxchimp.min.js' %}"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    // Close all other open submenus
+    $('.dropdown-submenu ul').not($(this).next('ul')).hide();
+
+    // Toggle the visibility of the clicked submenu
+    $(this).next('ul').toggle();
+
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
+</body>
+</html>

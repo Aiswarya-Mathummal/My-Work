@@ -1,0 +1,60 @@
+.main{
+
+ justify-content:center;
+ align-item:center;
+ height:100vh;
+}
+.main-div{
+justify-content:center;
+align-item:center;
+display:flex;
+padding:30px;
+padding-top:80px;
+}
+
+.msg_div{
+justify-content:center;
+align-item:center;
+display:flex;
+padding:50px;
+list-style-type: none;
+color:red;
+}
+
+.form-control {
+    color: black;
+}
+
+
+ .form-control::placeholder{
+  color: lightgray;
+  opacity: 0.8;
+}
+
+
+
+.form-label {
+color:gray;
+}
+
+
+
+select:selected{
+color:grey;}
+
+form{
+width:800px;
+}
+
+.badge {
+    display: inline-table;
+    padding: 0.55em 0.5em;
+    font-size: .75em;
+    font-weight: 900;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 8px;
+}

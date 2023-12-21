@@ -1,0 +1,35 @@
+{% extends 'customers/customer_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+
+<section class="main" >
+    <div style="padding:100px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card" style="width:100%;height:65vh;">
+                    <div class="card-body">
+                        <h1> Order Placed!!! Thank You For Choosing E-tailor...</h1><br><br><br><br>
+                        <h2>
+                            Your Order will be delivered on or before <span style="color:red;"> {{order.sewing_id.request_id.delivery_date}}</span>
+                            <br><br><br><br>
+                            cash on delivery : ₹ {{ order.sewing_id.total_price }}
+                        </h2><br><br><br><br>
+                        <center><a class="btn btn-outline-success mx-auto d-grid gap-2 col-6" href="{% url 'my_orders' login_id %}">My Orders</a></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </center>
+</section>
+{% endblock content %}

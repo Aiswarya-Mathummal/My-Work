@@ -1,0 +1,23 @@
+.main{
+ background: linear-gradient(rgba(136, 180, 78, .1), rgba(136, 180, 78, .1)), url(/static/images/.jpg) left bottom no-repeat;
+ background:black;
+ background-size: cover;
+
+ justify-content:center;
+ align-item:center;
+ height:100vh;
+}
+.main-div{
+justify-content:center;
+background-color: rgba(255, 255, 255, 0);
+align-item:center;
+display:flex;
+padding:30px;
+padding-top:80px;
+}
+
+table td,
+table th {
+    color: white;
+}
+

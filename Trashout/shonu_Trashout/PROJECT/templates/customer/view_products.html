@@ -1,0 +1,63 @@
+{% extends 'customer/customer_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load static %}
+<head>
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet">
+</head>
+{% block content %}
+<section class="main" style="height:auto;">
+    <center>
+        <div class="col-xs-12" style="padding:10px;">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <div class="alert alert-warning" role="alert" style="width:50%;">
+                    <li %} %} class="{{ message.tags }}" endif if message.tags style="list-style-type: none;" {% {%>{{message }}
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </center>
+    <div class="main-div">
+        <div class="modal-body">
+            <div class="quickview_body">
+                <div class="container">
+                    <div class="row">
+        {% for i in page_obj %}
+                        <div class="col-12 col-lg-5">
+                            <div class="quickview_pro_img">
+                                <img alt="" width="400px" height="400px" src="{{ i.image.url }}">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-7" style="padding-bottom:50px;">
+                            <div class="quickview_pro_des">
+                                <h4 class="title">{{ i.name }}</h4>
+                                <h5 class="price">₹ {{ i.price }} </h5>
+                                <p>{{ i.description }}</p>
+                                <a href="{% url 'product_more_details' login_id i.product_id %}">View Full Product Details</a>
+                            </div>
+                            <!-- Add to Cart Form -->
+                                <a class="btn cart-submit" name="addtocart" value="5" href="{% url 'buyer_product_request' login_id i.product_id %}">Buy Now
+                                </a>
+                                <!-- Wishlist -->
+                        </div>
+
+        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <center>{% include "pagination.html" %}</center>
+    <br>
+    <br>
+</section>
+{% endblock content %}

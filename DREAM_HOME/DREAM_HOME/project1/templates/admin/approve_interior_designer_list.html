@@ -1,0 +1,212 @@
+{% extends 'admin/admin_nav.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% block content %}
+<!--<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding:10px;
+
+}
+th, td {
+  background-color:#E6E6FA;
+  color:black;
+}
+</style>
+
+ <section style="padding:80px;background-color:#132043;">-->
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding:10px;
+
+
+}
+th, td {
+  background-color:rgba(255, 255, 255, 0.5);
+  color:black;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+section {
+
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+  background: url("https://bit.ly/44VaKoy") no-repeat;
+
+}
+
+.form-box {
+  position: relative;
+  width: 400px;
+  height: 695px;
+  background: #000000bf;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 2em;
+  color: #ffc107;
+  text-align: center;
+  font-weight: 700;
+}
+
+.inputbox {
+  position: relative;
+  margin: 30px 0;
+  width: 310px;
+  border-bottom: 2px solid #fff;
+}
+
+.inputbox label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 1em;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+input:focus ~ label {
+  top: -5px;
+}
+input:valid ~ label {
+  top: -5px;
+}
+
+.inputbox input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding: 0 35px 0 5px;
+  color: #fff;
+}
+
+.inputbox ion-icon {
+  position: absolute;
+  right: 8px;
+  color: #fff;
+  font-size: 1.2em;
+  top: 20px;
+}
+
+.forget {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 15px;
+  font-size: 0.9em;
+  color: #fff;
+}
+
+.forget label:nth-child(2) {
+  order: 1;
+}
+
+.forget label {
+  display: flex;
+  align-items: center;
+}
+
+.forget label input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+.forget label a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.forget label a:hover {
+  text-decoration: underline;
+}
+
+.button {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  background:#0dcaf0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.register {
+  font-size: 0.9em;
+  color: #fff;
+  text-align: center;
+  margin: 25px 0 10px;
+}
+
+.register p a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+.register p a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<section style="padding: 80px;background-image: url('/static/images/image-1.jpg');;">
+    <h2>Approve/Reject Interior Designer</h2>
+
+ <table border="2">
+    <tr>
+        <th>Interior_Designer_id</th>
+        <th>Name</th>
+        <th>Profile_pic</th>
+        <th>Address</th>
+        <th>District</th>
+        <th>Phone_no</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th colspan="2">Operations</th>
+
+    </tr>
+
+        {% for i in page_obj %}
+    <tr>
+        <td>{{i.interior_designer_id}}</td>
+        <td>{{i.name}}</td>
+        <td><img class="rounded mx-auto d-block" height="100px" src="{{i.photo.url}}" width="100px"></td>
+        <td>{{i.address}}</td>
+        <td>{{i.district}}</td>
+        <td>{{i.phone_no}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.password}}</td>
+        <td><a class="btn btn-success" href="{% url 'approve_interior_designer' login_id i.interior_designer_id %}">Approve</a></td>
+        <td><a class="btn btn-danger" href="{% url 'reject_interior_designer' login_id i.interior_designer_id %}">Reject</a></td>
+
+        {% endfor %}
+    </tr>
+ </table>
+         <center>{% include "pagination.html" %}</center>
+ </section>
+{% endblock content %}

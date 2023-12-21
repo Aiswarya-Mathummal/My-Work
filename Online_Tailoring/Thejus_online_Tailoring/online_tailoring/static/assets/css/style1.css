@@ -1,0 +1,118 @@
+.main{
+
+ justify-content:center;
+ align-item:center;
+ height:100vh;
+}
+.main-div{
+justify-content:center;
+align-item:center;
+display:flex;
+padding:30px;
+padding-top:30px;
+}
+
+
+.form-control:focus {
+    outline: none !important;
+    border:1px solid white;
+    box-shadow: 0 0 7px #BE9278;
+  }
+
+.mb-3, .my-3 {
+    margin: 1rem!important;
+}
+
+ .form-control::placeholder{
+  color: lightgray;
+  opacity: 0.6;
+}
+
+form{
+width:500px;
+}
+
+.form-control{
+font-size:1.5rem;
+height:35px;
+}
+
+.btn11{border:none;padding:28px 25px;display: block;cursor:pointer;color:#101a31;font-size:15px;background:none;font-weight:600;}.btn11:hover{color: #BE9278;}
+
+
+/* Style for the main menu items */
+
+
+/* Style for the main menu */
+.dropdown-submenu {
+  position: fixed;
+  padding10px;
+}
+
+/* Style for the main menu items */
+.dropdown-menu {
+  position: fixed;
+  padding: 5px;
+}
+
+/* Style for the sub-dropdown menu */
+.dropdown-submenu .dropdown-menu {
+padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  margin-top: 0; /* Remove the negative margin */
+  z-index: 1; /* Adjust the z-index to ensure submenus appear above parent menus */
+  min-width: 100px; /* Set a minimum width for submenus */
+  background-color: #fff; /* Background color for submenus */
+  border: 1px solid #ccc; /* Border for submenus */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for submenus */
+}
+
+/* Style for the submenu items */
+.dropdown-submenu .dropdown-menu li a {
+  padding:5px /* Adjust padding for submenu items */
+  text-decoration: none;
+  color: #333;
+}
+
+/* Hover effect for the main menu */
+.dropdown-submenu:hover .dropdown-menu {
+}
+
+/* Style for submenu item links on hover */
+.dropdown-submenu .dropdown-menu li a:hover {
+  background-color: #f0f0f0; /* Background color on hover */
+}
+
+body{
+line-height:1.8rem;
+}
+
+.btn {
+    padding: 14px 27px;
+    }
+
+
+/*** Store ***/
+.store-item .store-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 15, 15, .3);
+    opacity: 0;
+    transition: .5s;
+}
+
+.store-item:hover .store-overlay {
+    opacity: 1;
+}
+
+
+
